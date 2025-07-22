@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maine Medical Cannabis - Your Business Name</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Age Gate Modal */
+        .age-gate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .age-gate.hidden {
+            display: none;
+        }
+
+        .age-gate-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 500px;
+            margin: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .age-gate h2 {
+            margin-bottom: 20px;
+            color: #2c5530;
+            font-size: 28px;
+        }
+
+        .age-gate p {
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .age-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .age-btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .age-btn.yes {
+            background: #2c5530;
+            color: white;
+        }
+
+        .age-btn.yes:hover {
+            background: #1e3a21;
+        }
+
+        .age-btn.no {
+            background: #dc3545;
+            color: white;
+        }
+
+        .age-btn.no:hover {
+            background: #c82333;
+        }
+
+        /* Main Website Content */
+        .main-content {
+            display: none;
+        }
+
+        .main-content.visible {
+            display: block;
+        }
+
+        header {
+            background: #2c5530;
+            color: white;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #a8d5aa;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: #2c5530;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #2c5530;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .card h3 {
+            color: #2c5530;
+            margin-bottom: 15px;
+        }
+
+        .compliance {
+            background: #e8f5e8;
+            padding: 40px 0;
+        }
+
+        .compliance-info {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #2c5530;
+        }
+
+        .compliance h3 {
+            color: #2c5530;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .age-gate-content {
+                padding: 30px 20px;
+            }
+
+            .age-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Age Gate Modal -->
+    <div class="age-gate" id="ageGate">
+        <div class="age-gate-content">
+            <h2>Age Verification Required</h2>
+            <p>You must be 21 years or older to view this website. This site contains information about medical cannabis products.</p>
+            <p><strong>By entering this site, you certify that you are at least 21 years of age.</strong></p>
+            <div class="age-buttons">
+                <button class="age-btn yes" onclick="verifyAge(true)">I am 21 or older</button>
+                <button class="age-btn no" onclick="verifyAge(false)">I am under 21</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Website Content -->
+    <div class="main-content" id="mainContent">
+        <header>
+            <nav class="container">
+                <div class="logo">Your Cannabis Business</div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>Maine Medical Cannabis</h1>
+                <p>Compassionate care and quality products for registered patients</p>
+                <a href="#about" class="btn">Learn More</a>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="container">
+                <h2>About Our Practice</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>Licensed & Compliant</h3>
+                        <p>Fully licensed medical cannabis provider in the state of Maine, operating in full compliance with all state regulations.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Patient-Focused Care</h3>
+                        <p>We prioritize patient education and individualized treatment plans to help improve quality of life.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Quality Products</h3>
+                        <p>All products are tested for safety and potency, ensuring consistent and reliable medical cannabis options.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="compliance">
+            <div class="container">
+                <div class="compliance-info">
+                    <h3>Important Legal Information</h3>
+                    <p><strong>Medical Cannabis License:</strong> [Your License Number Here]</p>
+                    <p><strong>For registered Maine medical cannabis patients only.</strong> Valid medical cannabis registration card required. This website is for informational purposes only and does not constitute medical advice. Please consult with a healthcare provider before using medical cannabis.</p>
+                    <p>Products have not been evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="card" style="max-width: 600px; margin: 0 auto;">
+                    <h3>Get In Touch</h3>
+                    <p>📧 Email: info@yourbusiness.com</p>
+                    <p>📞 Phone: (207) XXX-XXXX</p>
+                    <p>📍 Address: Your Address, Maine 04XXX</p>
+                    <p style="margin-top: 20px;"><strong>Hours:</strong><br>
+                    Monday - Friday: 9:00 AM - 6:00 PM<br>
+                    Saturday: 10:00 AM - 4:00 PM<br>
+                    Sunday: Closed</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 Your Cannabis Business Name. All rights reserved.</p>
+                <p>Licensed Medical Cannabis Provider - State of Maine</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Age gate functionality
+        function verifyAge(isOver21) {
+            const ageGate = document.getElementById('ageGate');
+            const mainContent = document.getElementById('mainContent');
+            
+            if (isOver21) {
+                // Store verification for this session
+                sessionStorage.setItem('ageVerified', 'true');
+                
+                // Hide age gate and show content
+                ageGate.classList.add('hidden');
+                mainContent.classList.add('visible');
+            } else {
+                // Redirect to a different site or show message
+                alert('You must be 21 or older to access this website.');
+                window.location.href = 'https://www.maine.gov';
+            }
+        }
+
+        // Check if age was already verified this session
+        function checkAgeVerification() {
+            if (sessionStorage.getItem('ageVerified') === 'true') {
+                document.getElementById('ageGate').classList.add('hidden');
+                document.getElementById('mainContent').classList.add('visible');
+            }
+        }
+
+        // Run age check when page loads
+        window.addEventListener('load', checkAgeVerification);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
