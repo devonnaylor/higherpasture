@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-store" />
     <title>Higher Pasture Cannabis - Coming Soon</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap');
@@ -120,13 +119,11 @@
         }
         
         .ticker-container {
-  overflow: hidden;
-  background-color: #E63423;
-  height: 30px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 10;
+          width: 100%;
+          overflow: hidden;
+          background-color: #EF3D26;
+          padding: 15px 0;
+          white-space: nowrap;
         }
         
         .ticker-content {
@@ -137,26 +134,29 @@
         
         .ticker-text {
           white-space: nowrap;
-          padding-right: 2rem;
+          padding-right: 4rem;
           font-weight: bold;
-          font-size: 1rem;
+          font-size: 14px;
           letter-spacing: 0.08em;
           text-transform: uppercase;
           color: #fff;
         }
         
-
-.ticker-track {
-  display: inline-block;
-  white-space: nowrap;
-  animation: tickerScroll 20s linear infinite;
-  padding-left: 100%;
-}
+        /* Infinite scroll with pseudo-duplication */
+        .ticker-content::after {
+          content: attr(data-text);
+          padding-left: 4rem;
+          white-space: nowrap;
+        }
         
-@keyframes tickerScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
+        @keyframes scroll {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
 
 
         /* Responsive design */
@@ -191,37 +191,37 @@
     </style>
 </head>
 <body>
-    <div class="ticker-container-top">
+        <div class="ticker-container-top">
         <div class="ticker-content">
-            <div class="ticker-track">
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-            </div>
+            <span class="ticker-text">SMALL-BATCH PRECISION</span>
+            <span class="ticker-text">ELEVATED STANDARDS</span>
+            <span class="ticker-text">SMALL-BATCH PRECISION</span>
+            <span class="ticker-text">ELEVATED STANDARDS</span>
+            <span class="ticker-text">SMALL-BATCH PRECISION</span>
+            <span class="ticker-text">ELEVATED STANDARDS</span>
+            <span class="ticker-text">SMALL-BATCH PRECISION</span>
+            <span class="ticker-text">ELEVATED STANDARDS</span>
+            <span class="ticker-text">SMALL-BATCH PRECISION</span>
+            <span class="ticker-text">ELEVATED STANDARDS</span>
+            <span class="ticker-text">SMALL-BATCH PRECISION</span>
+            <span class="ticker-text">ELEVATED STANDARDS</span>
+            <span class="ticker-text">SMALL-BATCH PRECISION</span>
+            <span class="ticker-text">ELEVATED STANDARDS</span>
+            <span class="ticker-text">SMALL-BATCH PRECISION</span>
+            <span class="ticker-text">ELEVATED STANDARDS</span>
+            <span class="ticker-text">SMALL-BATCH PRECISION</span>
+            <span class="ticker-text">ELEVATED STANDARDS</span>
+            <span class="ticker-text">SMALL-BATCH PRECISION</span>
+            <span class="ticker-text">ELEVATED STANDARDS</span>
         </div>
-    </div>
+        </div>
     
     <div class="main-content">
         <div class="logo-container">
             <img src="./assets/higher-pasture-logo-2025.svg" alt="Higher Pasture Cannabis" class="logo">
         </div>
+
+        <div class="tagline">Small-Batch Precision. Elevated Standards.</div>
         
         <div class="coming-soon">Coming Soon</div>
         
@@ -230,28 +230,26 @@
 
     <div class="ticker-container">
         <div class="ticker-content">
-            <div class="ticker-track">
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-                <span class="ticker-text">GET HIGHER</span>
-            </div>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
+            <span class="ticker-text">GET HIGHER</span>
         </div>
     </div>
 </body>
