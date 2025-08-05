@@ -114,28 +114,38 @@
             position: relative;
         }
         
-       .ticker-container-top {
-            background-color: #EF3D26;
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            padding: 15px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-        }
-        
-        .ticker-content {
-            display: inline-block;
-            animation: scroll 60s linear infinite;
-            color: white;
-            font-family: 'ClashDisplay', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+.ticker-container-top {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #f3f3f3;
+  height: 40px;
+  border-bottom: 1px solid #ccc;
+}
+
+.ticker-content {
+  display: flex;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+.ticker-text {
+  white-space: nowrap;
+  padding-right: 4rem; /* space between repeats */
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #000;
+}
+
+/* Duplicate the text via ::after for infinite effect */
+.ticker-content::after {
+  content: attr(data-text);
+  padding-left: 4rem;
+  white-space: nowrap;
+}
+
 
         
         @keyframes scroll {
