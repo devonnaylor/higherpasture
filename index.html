@@ -32,6 +32,7 @@
             justify-content: center;
             padding: 2rem;
             text-align: center;
+            padding-top: 60px;
         }
 
         .logo-container {
@@ -104,13 +105,6 @@
         }
 
         /* Ticker tape styling */
-        .ticker-container.top {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        
         .ticker-container {
             background-color: #EF3D26;
             width: 100%;
@@ -119,7 +113,14 @@
             padding: 15px 0;
             position: relative;
         }
-
+        
+        .ticker-container.top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        
         .ticker-content {
             display: inline-block;
             animation: scroll 60s linear infinite;
@@ -131,6 +132,7 @@
             text-transform: uppercase;
         }
 
+        
         @keyframes scroll {
             0% {
                 transform: translateX(0%);
@@ -139,7 +141,7 @@
                 transform: translateX(-100%);
             }
         }
-
+        
         .ticker-text {
             margin-right: 10px;
         }
@@ -189,6 +191,8 @@
             <span class="ticker-text">GET HIGHER</span>
             <span class="ticker-text">GET HIGHER</span>
         </div>
+        </div>
+    
     <div class="main-content">
         <div class="logo-container">
             <img src="./assets/higher-pasture-logo-2025.svg" alt="Higher Pasture Cannabis" class="logo">
