@@ -120,11 +120,13 @@
         }
         
         .ticker-container {
-          width: 100%;
-          overflow: hidden;
-          background-color: #EF3D26;
-          padding: 15px 0;
-          white-space: nowrap;
+  overflow: hidden;
+  background-color: #E63423;
+  height: 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
         }
         
         .ticker-content {
@@ -137,27 +139,24 @@
           white-space: nowrap;
           padding-right: 2rem;
           font-weight: bold;
-          font-size: 14px;
+          font-size: 1rem;
           letter-spacing: 0.08em;
           text-transform: uppercase;
           color: #fff;
         }
         
-        /* Infinite scroll with pseudo-duplication */
-        .ticker-content::after {
-          content: attr(data-text);
-          padding-left: 2rem;
-          white-space: nowrap;
-        }
+
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: tickerScroll 20s linear infinite;
+  padding-left: 100%;
+}
         
-        @keyframes scroll {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
 
 
         /* Responsive design */
@@ -210,26 +209,28 @@
 
     <div class="ticker-container">
         <div class="ticker-content">
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
-            <span class="ticker-text">GET HIGHER</span>
+            <div class="ticker-track">
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+                <span class="ticker-text">GET HIGHER</span>
+            </div>
         </div>
     </div>
 </body>
