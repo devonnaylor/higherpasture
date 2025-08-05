@@ -104,62 +104,60 @@
             box-shadow: 0 8px 25px rgba(199, 131, 42, 0.3);
         }
 
-        /* Ticker tape styling */
-        .ticker-container {
-            background-color: #EF3D26;
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            padding: 15px 0;
-            position: relative;
+       /* Ticker tape styling */
+        .ticker-container-top {
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 1000;
+          width: 100%;
+          height: 40px;
+          background-color: #EF3D26;
+          border-bottom: 1px solid #ccc;
+          overflow: hidden;
+          white-space: nowrap;
         }
         
-.ticker-container-top {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  background-color: #EF3D26;
-  height: 40px;
-  border-bottom: 1px solid #ccc;
-}
-
-.ticker-content {
-  display: flex;
-  width: max-content;
-  animation: scroll 60s linear infinite;
-}
-
-.ticker-text {
-  white-space: nowrap;
-  padding-right: 4rem; /* space between repeats */
-  font-weight: bold;
-  font-size: 14px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-
-/* Duplicate the text via ::after for infinite effect */
-.ticker-content::after {
-  content: attr(data-text);
-  padding-left: 4rem;
-  white-space: nowrap;
-}
-
-
+        .ticker-container {
+          width: 100%;
+          overflow: hidden;
+          background-color: #EF3D26;
+          padding: 15px 0;
+          white-space: nowrap;
+        }
         
-        @keyframes scroll {
-            0% {
-                transform: translateX(0%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
+        .ticker-content {
+          display: inline-block;
+          white-space: nowrap;
+          animation: scroll 60s linear infinite;
         }
         
         .ticker-text {
-            margin-right: 10px;
+          white-space: nowrap;
+          padding-right: 4rem;
+          font-weight: bold;
+          font-size: 14px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #fff;
         }
+        
+        /* Infinite scroll with pseudo-duplication */
+        .ticker-content::after {
+          content: attr(data-text);
+          padding-left: 4rem;
+          white-space: nowrap;
+        }
+        
+        @keyframes scroll {
+          0% {
+            transform: translateX(0%);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
 
         /* Responsive design */
         @media (max-width: 768px) {
